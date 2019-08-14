@@ -7,4 +7,14 @@ package com.utils;
  */
 public class Transform2Rchat9x07 {
 
+    /**
+     * Rchat 9x07 模块AT指令中组名字转成中文
+     *
+     * @param unicode2Rchat9x07
+     * @return
+     */
+    public static String unicode2Cn(String unicode2Rchat9x07) {
+        return "";
+    }
+
 }

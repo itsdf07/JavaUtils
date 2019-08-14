@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 
 /**
  * @Description: TODO
@@ -13,11 +14,6 @@ import java.awt.event.ActionListener;
  * @Date: 2019/8/9/009 14:10
  */
 public class MainJFrame extends BaseJFrame {
-    private final String[] buttonName = {"十进制->十六进制",
-            "中文->Unicode",
-            "Unicode->中文",
-            "9x07:中文->Unicode",
-            "9x07:Unicode-中文"};
 
     public MainJFrame(String title) {
         super(title);
@@ -28,6 +24,7 @@ public class MainJFrame extends BaseJFrame {
 
         add(initPanelDemical2Hex(font));
         add(initPanelHex2Demical(font));
+        add(initPanelHex2String(font));
         add(initPanelCn2Unicode(font));
         add(initPanelUnicode2Cn(font));
 
@@ -109,6 +106,35 @@ public class MainJFrame extends BaseJFrame {
     }
 
     /**
+     * 初始化十六进制转换成十进制的界面及事件
+     *
+     * @param font 字体
+     * @return
+     */
+    private JPanel initPanelHex2String(Font font) {
+        JPanel jPanelHex2String = new JPanel();
+        JLabel jLabelHex2String = new JLabel("十六进制》字符串:");
+        JTextArea jTextAreaHex2StringValue = new JTextArea(1, 16);
+        jTextAreaHex2StringValue.setFont(font);
+        JButton jBtnHex2String = new JButton("》");
+        JTextArea jTextAreaHex2StringResult = new JTextArea(1, 16);
+        jTextAreaHex2StringResult.setFont(font);
+        jBtnHex2String.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String transValue = jTextAreaHex2StringValue.getText();
+                String transResult = Transform.hex2String(transValue);
+                jTextAreaHex2StringResult.setText(transResult);
+            }
+        });
+        jPanelHex2String.add(jLabelHex2String);
+        jPanelHex2String.add(jTextAreaHex2StringValue);
+        jPanelHex2String.add(jBtnHex2String);
+        jPanelHex2String.add(jTextAreaHex2StringResult);
+        return jPanelHex2String;
+    }
+
+    /**
      * 初始化中文转成Unicode
      *
      * @param font
@@ -116,7 +142,7 @@ public class MainJFrame extends BaseJFrame {
      */
     private JPanel initPanelCn2Unicode(Font font) {
         JPanel jPanelCn2Unicode = new JPanel();
-        JLabel jLabelCn2Unicode = new JLabel("中文》Unicode:");
+        JLabel jLabelCn2Unicode = new JLabel("字符串》Unicode:");
         JTextArea jTextAreaCn2UnicodeValue = new JTextArea(1, 16);
         jTextAreaCn2UnicodeValue.setFont(font);
         JButton jBtnCn2Unicode = new JButton("》");
@@ -126,7 +152,7 @@ public class MainJFrame extends BaseJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String transValue = jTextAreaCn2UnicodeValue.getText();
-                String transResult = Transform.cn2Unicode(transValue);
+                String transResult = Transform.string2Unicode2(transValue);
                 jTextAreaCn2UnicodeResult.setText(transResult + "");
             }
         });
@@ -145,7 +171,7 @@ public class MainJFrame extends BaseJFrame {
      */
     private JPanel initPanelUnicode2Cn(Font font) {
         JPanel jPanelUnicode2Cn = new JPanel();
-        JLabel jLabelUnicode2Cn = new JLabel("Unicode》中文:");
+        JLabel jLabelUnicode2Cn = new JLabel("Unicode》字符串:");
         JTextArea jTextAreaUnicode2CnValue = new JTextArea(1, 16);
         jTextAreaUnicode2CnValue.setFont(font);
         JButton jBtnUnicode2Cn = new JButton("》");
@@ -155,7 +181,8 @@ public class MainJFrame extends BaseJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String transValue = jTextAreaUnicode2CnValue.getText();
-                String transResult = Transform.unicode2Cn(transValue);
+                String transResult = null;
+                transResult = Transform.unicode2String(transValue);
                 jTextAreaUnicode2CnResult.setText(transResult + "");
             }
         });

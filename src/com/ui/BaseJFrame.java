@@ -11,7 +11,7 @@ import java.awt.*;
 public class BaseJFrame extends JFrame {
     private final int x = 300;
     private final int y = 200;
-    private int width = 800;
+    private int width = 1200;
     private int height = 400;
 
 
