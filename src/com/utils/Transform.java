@@ -7,12 +7,10 @@ package com.utils;
  */
 public class Transform {
     public static void main(String[] args) {
-        String va = "abs123";
-        String values = "我是中国人";
+        String values = "测";
         char[] chars = values.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            System.out.println(chars[i]);
-        }
+        String unicodeOne = Integer.toString(chars[0], 16);
+        System.out.println(unicodeOne);
     }
 
     /**
@@ -65,6 +63,22 @@ public class Transform {
             e1.printStackTrace();
         }
         return hex;
+    }
+
+
+    /**
+     * 字符串转换为16进制字符串
+     *
+     * @param string
+     * @return
+     */
+    public static String stringToHex(String string) {
+        String hexString = "";
+        for (int i = 0; i < string.length(); i++) {
+            int ch = string.charAt(i);
+            hexString = hexString + Integer.toHexString(ch);
+        }
+        return hexString;
     }
 
 
