@@ -9,10 +9,10 @@ import java.awt.*;
  * @Date: 2019/8/9/009 14:02
  */
 public class BaseJFrame extends JFrame {
-    private final int x = 300;
-    private final int y = 200;
-    private int width = 1200;
-    private int height = 400;
+    public final int x = 300;
+    public final int y = 200;
+    public int width = 1200;
+    public int height = 400;
 
 
     public BaseJFrame() {
