@@ -33,8 +33,8 @@ public class Transform {
      * @param hex 十六进制值
      * @return
      */
-    public static int hex2decimal(String hex) {
-        return Integer.parseInt(hex, 16);
+    public static long hex2decimal(String hex) {
+        return Long.parseLong(hex.trim(), 16);
     }
 
     /**

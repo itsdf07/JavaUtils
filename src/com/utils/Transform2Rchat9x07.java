@@ -33,4 +33,34 @@ public class Transform2Rchat9x07 {
         }
         return returnStr.toString();
     }
+
+    /**
+     * 对Unicode内容进行换位处理:
+     * 如“测试账号”，对应Unicode为:\u6d4b\u8bd5\u8d26\u53f7
+     * 接收的数据源为(该数据无法直接转换，需要处理成上面数据格式):4b6dd58b268df753
+     *
+     * @param atUnicode Unicode码
+     * @return
+     */
+    public static String Unicode2String(String atUnicode) {
+        if (atUnicode == null || atUnicode.trim().length() % 2 != 0) {
+            return "Unicode码格式不对";
+        }
+        String[] data = new String[atUnicode.length() / 2];
+        for (int i = 0; i < data.length; i++) {
+            if (i % 2 == 0) {
+                data[i + 1] = atUnicode.substring(i * 2, i * 2 + 2);
+            } else {
+                data[i - 1] = "\\u" + atUnicode.substring(i * 2, i * 2 + 2);
+            }
+        }
+        atUnicode = "";
+        for (String unicode : data) {
+            atUnicode += unicode;
+        }
+        String transResult = Transform.unicode2String(atUnicode);
+        return transResult;
+    }
+
+
 }

@@ -126,7 +126,7 @@ public class MainJFrame2Rchat9x07 extends BaseJFrame {
                     jTextAreaPoc2AT091234Result.setText("");
                     return;
                 }
-                int transResult = Transform.hex2decimal(transValue);
+                long transResult = Transform.hex2decimal(transValue);
                 jTextAreaPoc2AT091234Value.setText(transResult + "");
             }
         });

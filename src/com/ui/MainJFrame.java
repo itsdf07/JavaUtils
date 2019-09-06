@@ -94,7 +94,7 @@ public class MainJFrame extends BaseJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String transValue = jTextAreaHex2DemicalValue.getText();
-                int transResult = Transform.hex2decimal(transValue);
+                long transResult = Transform.hex2decimal(transValue);
                 jTextAreaHex2DemicalResult.setText(transResult + "");
             }
         });
